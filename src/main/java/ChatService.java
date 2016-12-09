@@ -3,6 +3,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+// github init 2016.12.09 by sunrc
+
 public class ChatService {
     //클라이언트 소켓이 접속될 때 저장할 Collection선언
     private ArrayList<ServerThread> clist;
