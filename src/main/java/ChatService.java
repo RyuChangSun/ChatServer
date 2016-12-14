@@ -59,23 +59,29 @@ public class ChatService {
         StringBuffer sb = new StringBuffer();
         if(str1.equals("talk")) {
             sb.append("talk/"+str2+"/["+reip+"]/"+str4+ "/null" );
+                        
+            for(ServerThread e : clist) {
+                e.getPw().println(sb.toString());
+                System.out.println("clist : " + sb.toString());
+            }
         }else {
             sb.append(str1).append("/");
             sb.append(str2).append("/");
             sb.append(str3).append("/");
             sb.append(str4);
-        }
-        
-        String userList = getUserList();
-         
-        for(ServerThread e : clist) {
-            e.getPw().println(sb.toString());
-            System.out.println("clist : " + sb.toString());
             
-            e.getPw().println(userList);
-            System.out.println("userList : " + userList);
-        }
-        
+            System.out.println("ChatService.sendMsg.str1 : " + str1);
+            System.out.println("ChatService.sendMsg.str2 : " + str2);
+            System.out.println("ChatService.sendMsg.str3 : " + str3);
+            System.out.println("ChatService.sendMsg.str4 : " + str4);
+            
+            String userList = getUserList();
+            
+            for(ServerThread e : clist) {                
+                e.getPw().println(userList);
+                System.out.println("ChatService.sendMsg.userList : " + userList);
+            }
+        }            
     }    
     
     public String getUserList()
